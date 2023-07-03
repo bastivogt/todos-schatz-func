@@ -10,6 +10,12 @@ import TodoList from "./components/TodoList";
 
 import store from "./store/storeObj";
 
+import BaseLayout from "./components/BaseLayout";
+
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Todos from "./pages/Todos";
+import Todo from "./pages/Todo";
+
 export default function App() {
   const [updater, setUpdater] = useState({});
   store.todoStore.onUpdate = function () {
@@ -23,40 +29,14 @@ export default function App() {
 
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <Hero className="mt-4">
-          <h1>Todos</h1>
-          <img src="/favorite.svg" />
-        </Hero>
-        <TodoAdd></TodoAdd>
-
-        <IF
-          condition={store.todoStore.activeTodos.length !== 0}
-          THEN={
-            <Card header="Nicht erledigte Todos">
-              <TodoList>
-                {store.todoStore.activeTodos.map((todo) => {
-                  return <TodoItem key={todo.id} todo={todo} />;
-                })}
-              </TodoList>
-            </Card>
-          }
-        />
-
-        <IF
-          condition={store.todoStore.doneTodos.length !== 0}
-          THEN={
-            <Card header="Erledigte Todos">
-              <TodoList>
-                {store.todoStore.doneTodos.map((todo) => {
-                  return <TodoItem key={todo.id} todo={todo} />;
-                })}
-              </TodoList>
-            </Card>
-          }
-        />
-      </div>
+      <HashRouter>
+        <BaseLayout>
+          <Routes>
+            <Route path="/" element={<Todos />} />
+            <Route path="/todo/:id" element={<Todo />} />
+          </Routes>
+        </BaseLayout>
+      </HashRouter>
     </>
   );
 }

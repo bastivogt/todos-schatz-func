@@ -55,6 +55,12 @@ export class TodoStore extends Store {
     this.__fireUpdate();
   }
 
+  edit(id, title) {
+    const index = this.__todos.findIndex((item) => item.id === id);
+    this.__todos[index].title = title;
+    this.__fireUpdate();
+  }
+
   save() {
     window.localStorage.setItem("TODOS", JSON.stringify(this.__todos));
   }

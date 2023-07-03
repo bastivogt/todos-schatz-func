@@ -1,8 +1,15 @@
 import React from "react";
 
 import store from "../store/storeObj";
+import { Link, resolvePath, useNavigate } from "react-router-dom";
 
-export default function TodoItem({ todo, onDelete, onChangeDone }) {
+export default function TodoItem({
+  todo,
+  onDelete,
+  onChangeDone,
+  edit = "Edit",
+}) {
+  const navigate = useNavigate();
   function generateID() {
     return `${todo.id}-${todo.title}`;
   }
@@ -27,6 +34,11 @@ export default function TodoItem({ todo, onDelete, onChangeDone }) {
         id: todo.id,
         done: evt.target.checked,
       });
+  }
+
+  function editHandler() {
+    console.log("TodoItem - editHandler");
+    navigate("/todo/" + todo.id);
   }
   return (
     <div className="todo-item">
@@ -53,10 +65,23 @@ export default function TodoItem({ todo, onDelete, onChangeDone }) {
           </label>
         </div>
         <div className="flex-shrink-1">
-          <button
-            className="btn btn-sm btn-close"
-            onClick={deleteTodoHandler}
-          ></button>
+          <div className="d-flex align-items-center">
+            <button
+              className="btn btn-sm btn-primary"
+              style={{ margin: "3px" }}
+              onClick={editHandler}
+            >
+              <img src="/edit.svg" width="16" height="16" />
+            </button>
+
+            <button
+              className="btn btn-sm btn-danger"
+              style={{ margin: "3px" }}
+              onClick={deleteTodoHandler}
+            >
+              <img src="/delete.svg" width="16" height="16" />
+            </button>
+          </div>
         </div>
       </li>
     </div>
