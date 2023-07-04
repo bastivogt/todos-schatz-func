@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Hero from "./components/Hero";
-import Card from "./components/Card";
-import Navbar from "./components/Navbar";
-import TodoAdd from "./components/TodoAdd";
-import IF from "./components/IF";
-import TodoItem from "./components/TodoItem";
-import TodoList from "./components/TodoList";
+import { TodoContext } from "./TodoContext";
 
 import store from "./store/storeObj";
 
