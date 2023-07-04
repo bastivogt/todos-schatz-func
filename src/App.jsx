@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { TodoContext } from "./TodoContext";
-
 import store from "./store/storeObj";
 
 import BaseLayout from "./components/BaseLayout";

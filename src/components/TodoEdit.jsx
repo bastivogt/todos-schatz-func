@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import store from "../store/storeObj";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import Card from "./Card";
 
 export default function TodoEdit({
@@ -11,10 +11,34 @@ export default function TodoEdit({
   back = "Zurück",
 }) {
   const todo = store.todoStore.getTodoByID(id);
-
-  const [inputText, setInputText] = useState(todo.title);
-
   const navigate = useNavigate();
+  const [inputText, setInputText] = useState("");
+
+  useEffect(() => {
+    if (todo) {
+      setInputText(todo.title);
+    }
+  }, []);
+
+  console.log("TODO ###", todo);
+  if (!todo) {
+    //navigate("/");
+    //redirect("/");
+    return (
+      <>
+        <Card header="Fehler">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Zurück
+          </button>
+        </Card>
+      </>
+    );
+  }
 
   function inputChangeHandler(evt) {
     setInputText(evt.target.value);
@@ -40,6 +64,7 @@ export default function TodoEdit({
   function backHandler() {
     navigate("/");
   }
+
   return (
     <>
       <Card header={`Todo bearbeiten [id: ${id}]`}>
