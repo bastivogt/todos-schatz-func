@@ -10,7 +10,7 @@ export default function NotFound() {
   return (
     <>
       <Card header="Seite nicht gefunden">
-        <h1>404 - Seite nicht gefunden</h1>
+        <h2>404 - Todo nicht gefunden</h2>
         <p>
           <button className="btn btn-primary" onClick={clickHandler}>
             Zurück

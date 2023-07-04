@@ -27,6 +27,7 @@ export default function TodoEdit({
     return (
       <>
         <Card header="Fehler">
+          <h2>Ein Fehler ist aufgetreten!</h2>
           <button
             className="btn btn-primary"
             onClick={() => {
