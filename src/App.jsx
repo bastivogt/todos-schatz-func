@@ -9,6 +9,7 @@ import BaseLayout from "./components/BaseLayout";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Todos from "./pages/Todos";
 import Todo from "./pages/Todo";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   const [updater, setUpdater] = useState({});
@@ -28,6 +29,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Todos />} />
             <Route path="/todo/:id" element={<Todo />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BaseLayout>
       </HashRouter>

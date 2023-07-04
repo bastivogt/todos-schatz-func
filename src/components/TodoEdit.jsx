@@ -8,6 +8,7 @@ export default function TodoEdit({
   id,
   placeholder = "Todo",
   label = "Speichern",
+  back = "Zurück",
 }) {
   const todo = store.todoStore.getTodoByID(id);
 
@@ -35,6 +36,10 @@ export default function TodoEdit({
       navigate("/");
     }
   }
+
+  function backHandler() {
+    navigate("/");
+  }
   return (
     <>
       <Card header={`Todo bearbeiten [id: ${id}]`}>
@@ -51,6 +56,15 @@ export default function TodoEdit({
             {label}
           </button>
         </div>
+        <p>
+          <button
+            className="btn btn-primary"
+            style={{ marginTop: "20px" }}
+            onClick={backHandler}
+          >
+            {back}
+          </button>
+        </p>
       </Card>
     </>
   );
