@@ -8,11 +8,12 @@ import TodoItem from "./../components/TodoItem";
 import TodoList from "./../components/TodoList";
 
 import store from "../store/storeObj";
+import usePageTitle from "../hooks/usePageTitle";
+import useMetaDescription from "../hooks/useMetaDescription";
 
 export default function Todos() {
-  useEffect(() => {
-    console.log("Todos Page", store.todoStore.todos);
-  });
+  usePageTitle({ prefix: "Todos", title: "Alle Todos" });
+  useMetaDescription("Alle Todos");
   return (
     <>
       <TodoAdd></TodoAdd>
