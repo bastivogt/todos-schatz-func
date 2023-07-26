@@ -17,7 +17,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    store.todoStore.setTodos(store.todoStore.load());
+    //store.todoStore.setTodos(store.todoStore.load());
   }, []);
 
   return (

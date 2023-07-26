@@ -1,4 +1,5 @@
 import React from "react";
+import store from "../store/storeObj";
 
 export default function Navbar() {
   function resetHandler(evt) {

@@ -14,6 +14,8 @@ import useMetaDescription from "../hooks/useMetaDescription";
 export default function Todos() {
   usePageTitle({ prefix: "Todos", title: "Alle Todos" });
   useMetaDescription("Alle Todos");
+
+  console.log("Todos store", store);
   return (
     <>
       <TodoAdd></TodoAdd>
